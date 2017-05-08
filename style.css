@@ -1,0 +1,34 @@
+body {
+  font-family: sans-serif;
+  font-size: 20px;
+}
+
+main {
+  width: 100%;
+  text-align: center;
+}
+
+input {
+  cursor:pointer;
+  color: #ffffff;
+  border: none;
+  padding: 10px;
+  text-transform: uppercase;
+  margin: 10px;
+}
+
+.green {
+  background-color:#296141;
+}
+
+.orange {
+  background-color:#705526;
+}
+
+.red {
+  background-color:#702626;
+}
+
+.blue {
+  background-color:#2c434f;
+}
