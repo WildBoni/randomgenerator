@@ -1,49 +1,58 @@
-var first = ["Lead", "Senior", "Direct", "Corporate", "Dynamic", "Future", "Product", "National", "District", "Central", "Regional", "Global", "Customer",
-"Junior", "Investor", "Dynamic", "International", "Legacy", "Forward", "Internal", "Human", "Chief", "Principal", "Social", "Local"];
-var middle = ["Solutions", "Program", "Research", "Brand", "Security", "Marketing", "Print", "Implementation", "Integration", "Functionality",
-"Response", "Copyright", "Art", "Identity", "Markets", "Photography", "Division", "Applications", "Optimization", "Visual", "Infrastructure", "Intranet",
-"Communications", "Web", "Branding", "Quality", "Merchandise", "Mobility", "Accounts", "Data", "Creative", "Configuration", "Styling", "Interactions",
-"Digital", "Usability", "Metrics", "System", "Connectivity", "Impagination", "Media", "Front End", "Back End", "Responsive", "Technologies"];
-var last = ["Supervisor", "Associate", "Executive", "Liason", "Officer", "Manager", "Engineer", "Specialist", "Director", "Coordinator", "Administrator",
-"Architect", "Analyst", "Designer", "Planner", "Orchestrator", "Technician", "Developer", "Producer", "Consultant", "Assistant", "Facilitator", "Agent",
-"Representative", "Strategist", "Guru", "Evangelist", "Ninja", "Advisor", "Copywriter"];
+var data, first, middle, last, primo, secondo, terzo, ansiami, ansia1, num1, num2, num3;
 
-var num1 = first.length;
-var num2 = middle.length;
-var num3 = last.length;
+request = new XMLHttpRequest();
+request.open('GET', 'phrases.json', true);
 
-var fast1 = 21;
-var fast2 = 20;
-var fast3 = 20;
+request.onload = function() {
+	if (request.status >= 200 && request.status < 400){
+		// Success!
+		data = JSON.parse(request.responseText);
 
-primo = new Array("assistere", "digitalizzare", "risolvere", "instradare", "calibrare", "ricalcolare", "profilare", "catalogare", "riprogrammare", "aggiornare", "formattare",
-"customizzare", "duplicare", "azzerare", "resettare", "implementare", "backuppare", "masterizzare", "schedulare", "rapportare", "inserire", "ricalcolare");
-secondo = new Array("l'inceppamento", "il blocco", "il crash", "la problematica", "l'aggiornamento", "la feature", "la sincronizzazione", "il rendering", "la finestra",
-"la funzionalità", "la criticità", "il ticket", "la rotazione", "l'errore", "la tempistica", "il bug", "la notifica", "la ricezione", "la release", "la visualizzazione", "la cache");
-terzo = new Array("della stampante", "della multifunzione", "sul router", "dello switch", "dei pacchetti di rete", "sulla porta 80", "del server", "del database", "da remoto",
-"del gateway", "di Photoshop", "di Illustrator", "di Xpress", "di Adobe", "sul Mac", "del disco esterno", "della casella di posta", "di rete", "nel refresh del browser",
-"in locale", "per l'impaginazione");
+		first = [data.qualifica[0]];
+		middle = [data.qualifica[1]];
+		last = [data.qualifica[2]];
 
-var ansia1 = 11;
+		primo = [data.fastidio[0]];
+		secondo = [data.fastidio[1]];
+		terzo = [data.fastidio[2]];
 
-ansiami = new Array("il prima possibile", "e siamo già in ritardo", "ma la deadline era ieri", "in mattinata", "in mezz'ora", "su un piede solo", "senza mani",
-"senza toccare il mouse", "con il monitor spento", "con il System 9", "con carta e penna", "con le mani legate");
+		ansiami = [data.ansia];
+
+		num1 = first[0].first.length;
+		num2 = middle[0].middle.length;
+		num3 = last[0].last.length;
+
+		fast1 = primo[0].primo.length;
+		fast2 = secondo[0].secondo.length;
+		fast3 = terzo[0].terzo.length;
+
+		ansia1 = ansiami[0].length;
+	} else {
+		// We reached our target server, but it returned an error
+	}
+};
+
+request.onerror = function() {
+	// There was a connection error of some sort
+};
+
+request.send();
 
 function generate() {
-	index1 = Math.round(Math.random() * num1);
-	index2 = Math.round(Math.random() * num2);
-	index3 = Math.round(Math.random() * num3);
-	document.getElementById('job_title_gen').innerHTML = first[index1] + " " + middle[index2] + " " + last[index3];
+	index1 = (Math.round(Math.random() * num1))-1;
+	index2 = (Math.round(Math.random() * num2))-1;
+	index3 = (Math.round(Math.random() * num3))-1;
+	document.getElementById('job_title_gen').innerHTML = first[0].first[index1] + " " + middle[0].middle[index2] + " " + last[0].last[index3];
 }
 function infastidisci() {
-	fastindex1 = Math.round(Math.random() * fast1);
-	fastindex2 = Math.round(Math.random() * fast2);
-	fastindex3 = Math.round(Math.random() * fast3);
-	document.getElementById('fastidio_gen').innerHTML = primo[fastindex1] + " " + secondo[fastindex2] + " " + terzo[fastindex3];
+	fastindex1 = (Math.round(Math.random() * fast1))-1;
+	fastindex2 = (Math.round(Math.random() * fast2))-1;
+	fastindex3 = (Math.round(Math.random() * fast3))-1;
+	document.getElementById('fastidio_gen').innerHTML = primo[0].primo[fastindex1] + " " + secondo[0].secondo[fastindex2] + " " + terzo[0].terzo[fastindex3];
 }
 function ansiogeno() {
-	ansiaindex1 = Math.round(Math.random() * ansia1);
-	document.getElementById('ansia_gen').innerHTML = ansiami[ansiaindex1];
+	ansiaindex1 = (Math.round(Math.random() * ansia1))-1;
+	document.getElementById('ansia_gen').innerHTML = ansiami[0][ansiaindex1];
 }
 function tutto() {
   generate();
