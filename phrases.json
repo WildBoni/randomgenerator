@@ -1,6 +1,5 @@
 {
-   "qualifica":[
-      {
+  "qualifica": {
          "first":[
             "Lead",
             "Senior",
@@ -27,9 +26,7 @@
             "Principal",
             "Social",
             "Local"
-         ]
-      },
-      {
+         ],
          "middle":[
             "Solutions",
             "Program",
@@ -76,9 +73,7 @@
             "Back End",
             "Responsive",
             "Technologies"
-         ]
-      },
-      {
+         ],
          "last":[
             "Supervisor",
             "Associate",
@@ -111,10 +106,9 @@
             "Advisor",
             "Copywriter"
          ]
-      }
-   ],
-   "fastidio":[
-      {
+  },
+
+ "fastidio": {
          "primo":[
             "assistere",
             "digitalizzare",
@@ -138,9 +132,7 @@
             "rapportare",
             "inserire",
             "ricalcolare"
-         ]
-      },
-      {
+         ],
          "secondo":[
             "l'inceppamento",
             "il blocco",
@@ -163,9 +155,7 @@
             "la release",
             "la visualizzazione",
             "la cache"
-         ]
-      },
-      {
+         ],
          "terzo":[
             "della stampante",
             "della multifunzione",
@@ -189,8 +179,7 @@
             "in locale",
             "per l'impaginazione"
          ]
-      }
-   ],
+      },
    "ansia":[
       "il prima possibile",
       "e siamo già in ritardo",
