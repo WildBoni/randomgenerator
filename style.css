@@ -32,3 +32,9 @@ input {
 .blue {
   background-color:#2c434f;
 }
+
+@media (max-width: 600px) {
+  body {
+    font-size: 24px;
+  }
+}
