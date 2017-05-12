@@ -41,7 +41,6 @@ function getphrases() {
 	request.send();
 }
 
-
 getphrases();
 
 /* Randomly choosing an array value */

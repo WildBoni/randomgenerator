@@ -33,6 +33,7 @@ input {
   background-color:#2c434f;
 }
 
+/* Little tweaks for mobile devices */
 @media (max-width: 600px) {
   body {
     font-size: 24px;
