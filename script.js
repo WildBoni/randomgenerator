@@ -44,26 +44,28 @@ function getphrases() {
 getphrases();
 
 /* Randomly choosing an array value */
-function pick(value){
-	var chosenNumber = (Math.round(Math.random() * value))-1;
+function pick(array, length){
+	// var chosenNumber = (Math.round(Math.random() * value));
+	var chosenNumber = array[Math.floor(Math.random()*length)];
+	console.log(chosenNumber);
 	return chosenNumber;
 }
 
 function qualificati() {
-	index1 = pick(num1);
-	index2 = pick(num2);
-	index3 = pick(num3);
-	document.getElementById('job_title_gen').innerHTML = first[index1] + " " + middle[index2] + " " + last[index3];
+	index1 = pick(first, num1);
+	index2 = pick(middle, num2);
+	index3 = pick(last, num3);
+	document.getElementById('job_title_gen').innerHTML = index1 + " " + index2 + " " + index3;
 }
 function infastidisci() {
-	fastindex1 = pick(fast1);
-	fastindex2 = pick(fast2);
-	fastindex3 = pick(fast3);
-	document.getElementById('fastidio_gen').innerHTML = primo[fastindex1] + " " + secondo[fastindex2] + " " + terzo[fastindex3];
+	fastindex1 = pick(primo, fast1);
+	fastindex2 = pick(secondo, fast2);
+	fastindex3 = pick(terzo, fast3);
+	document.getElementById('fastidio_gen').innerHTML = fastindex1 + " " + fastindex2 + " " + fastindex3;
 }
 function ansiogeno() {
-	ansiaindex1 = pick(ansia1);
-	document.getElementById('ansia_gen').innerHTML = ansiami[ansiaindex1];
+	ansiaindex1 = pick(ansiami, ansia1);
+	document.getElementById('ansia_gen').innerHTML = ansiaindex1;
 }
 function tutto() {
   qualificati();

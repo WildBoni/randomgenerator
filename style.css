@@ -39,4 +39,7 @@ input {
   body {
     font-size: 24px;
   }
+  main {
+    margin-top: 10px;
+  }
 }

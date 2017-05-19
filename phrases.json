@@ -116,6 +116,7 @@
          "calibrare",
          "ricalcolare",
          "profilare",
+         "invertire",
          "catalogare",
          "riprogrammare",
          "aggiornare",
@@ -130,7 +131,9 @@
          "schedulare",
          "rapportare",
          "inserire",
-         "ricalcolare"
+         "ricalcolare",
+         "virtualizzare",
+         "pingare"
       ],
       "secondo":[
          "l'inceppamento",
@@ -151,9 +154,11 @@
          "il bug",
          "la notifica",
          "la ricezione",
+         "il feedback",
          "la release",
          "la visualizzazione",
-         "la cache"
+         "la cache",
+         "la latenza"
       ],
       "terzo":[
          "della stampante",
@@ -168,7 +173,7 @@
          "del gateway",
          "di Photoshop",
          "di Illustrator",
-         "di Xpress",
+         "sulla macchina virtuale",
          "di Adobe",
          "sul Mac",
          "del disco esterno",
@@ -176,7 +181,8 @@
          "di rete",
          "nel refresh del browser",
          "in locale",
-         "per l'impaginazione"
+         "di JavaScript",
+         "del gateway"
       ]
    },
    "ansia":[
