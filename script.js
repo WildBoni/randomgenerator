@@ -1,4 +1,4 @@
-var data, first, middle, last, primo, secondo, terzo, ansiami, ansia1, num1, num2, num3, fast1, fast2, fast3;
+var data, first, middle, last, primo, secondo, terzo, ansiami, ansia1, num1, num2, num3, fast1, fast2, fast3, battutona, battuta1;
 
 /* Retrieving data from model */
 function getphrases() {
@@ -20,6 +20,8 @@ function getphrases() {
 
 			ansiami = data.ansia;
 
+			battutona = data.battuta;
+
 			num1 = first.length;
 			num2 = middle.length;
 			num3 = last.length;
@@ -29,6 +31,8 @@ function getphrases() {
 			fast3 = terzo.length;
 
 			ansia1 = ansiami.length;
+
+			battuta1 = battutona.length;
 		} else {
 			document.getElementById('job_title_gen').innerHTML = "Ooops, something went wrong: I couldn't get any data";
 		}
@@ -72,5 +76,8 @@ function tutto() {
   infastidisci();
   ansiogeno();
 }
-
+function sparabattuta() {
+	battutaccia = pick(battutona, battuta1);
+	document.getElementById('battuta_gen').innerHTML = battutaccia;
+}
 /* Ready to rock! */
