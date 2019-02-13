@@ -1,0 +1,42 @@
+body {
+  font-family: sans-serif;
+  font-size: 20px;
+}
+
+#image-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+input {
+  cursor:pointer;
+  color: #000;
+  /* border: none; */
+  padding: 10px;
+  text-transform: uppercase;
+  margin: 10px;
+}
+
+.btn {
+  display: inline-block;
+  cursor:pointer;
+  color: #ffffff;
+  /* border: none; */
+  padding: 10px;
+  text-transform: uppercase;
+  text-decoration: none;
+  margin: 10px;
+}
+
+.green {
+  background-color:#296141;
+}
+
+.orange {
+  background-color:#705526;
+}
+
+.blue {
+  background-color:#84a0af;
+}

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>Memizator 2.0</title>
+  <meta name="description" content="memizzatore">
+  <meta name="author" content="DB">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+  <div style="text-align: center">
+    <h1>Il fighissimo Memizator 2.0</h1>
+  </div>
+  <div id="image-container">
+    <div style="margin: 10px 10px">
+      <div>
+        <h4>Seleziona un'immagine predefinita...</h4>
+        <button onclick="selimmagine(1)">  <img id="selezione1" src="img/dog.jpg" width="100"></button>
+        <button onclick="selimmagine(2)">  <img id="selezione2" src="img/cat.jpg" width="100"></button>
+        <button onclick="selimmagine(3)">  <img id="selezione3" src="img/llama.jpg" width="100"></button>
+        <button onclick="selimmagine(4)">  <img id="selezione4" src="img/lego.jpg" width="100"></button>
+      </div>
+      <div>
+        <h4>...oppure scegli la tua foto peggiore</h4>
+        <input type="file" class="blue" id="file" />
+      </div>
+      <div>
+        <h4>2) Aggiungi il testo</h4>
+        <span>Scritta superiore:</span><br/>
+        <input id="topLineText" type="text"><br/>
+        <span>Scritta inferiore:</span><br/>
+        <input id="bottomLineText" type="text"><br/>
+      </div>
+    </div>
+    <canvas style="margin: 10px 10px" id="canvas" width="500" height="500"></canvas>
+  </div>
+  <div style="text-align: center; margin: 30px 0;">
+    <a id="dl" class="btn green" download="Canvas.jpg" href="#">Memizzati!</a>
+  </div>
+  <div style="text-align: center">
+    <h3>Dai un senso alla giornata: <strong><a href="../index.html">genera ansia e fastidio!</a></strong></h3>
+  </div>
+  <script>
+
+    function dlCanvas() {
+      var dt = canvas.toDataURL('image/jpg');
+      /* Change MIME type to trick the browser to downlaod the file instead of displaying it */
+      dt = dt.replace(/^data:image\/[^;]*/, 'data:application/octet-stream');
+      /* In addition to <a>'s "download" attribute, you can define HTTP-style headers */
+      dt = dt.replace(/^data:application\/octet-stream/, 'data:application/octet-stream;headers=Content-Disposition%3A%20attachment%3B%20filename=Canvas.png');
+
+      this.href = dt;
+    };
+
+    document.getElementById("dl").addEventListener('click', dlCanvas, false);
+
+
+    function textChangeListener (evt) {
+      var id = evt.target.id;
+      var text = evt.target.value;
+
+      if (id == "topLineText") {
+        window.topLineText = text;
+      } else {
+        window.bottomLineText = text;
+      }
+
+      redrawMeme(window.imageSrc, window.topLineText, window.bottomLineText);
+    }
+
+    function redrawMeme(image, topLine, bottomLine) {
+      // Get Canvas2DContext
+      var canvas = document.querySelector('canvas');
+      var ctx = canvas.getContext("2d");
+      if (image != null)
+        ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+
+      // Text attributes
+      ctx.font = '30pt Impact';
+      ctx.textAlign = 'center';
+      ctx.strokeStyle = 'black';
+      ctx.lineWidth = 3;
+      ctx.fillStyle = 'white';
+
+      if (topLine != null) {
+        ctx.fillText(topLine, canvas.width / 2, 40);
+        ctx.strokeText(topLine, canvas.width / 2, 40);
+      }
+
+      if (bottomLine != null) {
+        ctx.fillText(bottomLine, canvas.width / 2, canvas.height - 20);
+        ctx.strokeText(bottomLine, canvas.width / 2, canvas.height - 20);
+      }
+    }
+
+    function handleFileSelect(evt) {
+      var canvasWidth = 500;
+      var canvasHeight = 500;
+      var file = evt.target.files[0];
+
+      var reader = new FileReader();
+      reader.onload = function(fileObject) {
+        var data = fileObject.target.result;
+
+        // Create an image object
+        var image = new Image();
+        image.onload = function() {
+
+          window.imageSrc = this;
+          redrawMeme(window.imageSrc, null, null);
+        }
+
+        // Set image data to background image.
+        image.src = data;
+        console.log(fileObject.target.result);
+      };
+      reader.readAsDataURL(file)
+    }
+
+    function selimmagine(num) {
+      var image = document.getElementById("selezione"+num);
+      window.imageSrc = image;
+      redrawMeme(window.imageSrc, null, null);
+    }
+
+    window.topLineText = "";
+    window.bottomLineText = "";
+    var input1 = document.getElementById('topLineText');
+    var input2 = document.getElementById('bottomLineText');
+    input1.oninput = textChangeListener;
+    input2.oninput = textChangeListener;
+    document.getElementById('file').addEventListener('change', handleFileSelect, false);
+    document.getElementById("dl").addEventListener('click', dlCanvas, false);
+  </script>
+
+</body>
+</html>

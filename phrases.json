@@ -108,7 +108,7 @@
       ]
    },
    "fastidio":{
-      "primo":[
+      "azione":[
          "assistere",
          "digitalizzare",
          "risolvere",
@@ -135,7 +135,7 @@
          "virtualizzare",
          "pingare"
       ],
-      "secondo":[
+      "oggetto":[
          "l'inceppamento",
          "il blocco",
          "il crash",
@@ -161,7 +161,7 @@
          "la latenza",
          "il multitasking"
       ],
-      "terzo":[
+      "specifica":[
          "della stampante",
          "della multifunzione",
          "sul router",

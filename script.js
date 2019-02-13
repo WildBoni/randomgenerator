@@ -1,4 +1,6 @@
-var data, first, middle, last, primo, secondo, terzo, ansiami, ansia1, num1, num2, num3, fast1, fast2, fast3, battutona, battuta1;
+var data, qualificaFirst, qualificaMiddle, qualificaLast, azione, oggetto, specifica,
+	ansie, battute, qualificaFirstLunghezza, qualificaMiddleLunghezza, qualificaLastLunghezza,
+	azioneLunghezza, oggettoLunghezza, specificaLunghezza, ansiaLunghezza, battutaLunghezza;
 
 /* Retrieving data from model */
 function getphrases() {
@@ -10,66 +12,65 @@ function getphrases() {
 			// Success!
 			data = JSON.parse(request.responseText);
 
-			first = data.qualifica.first;
-			middle = data.qualifica.middle;
-			last = data.qualifica.last;
+			qualificaFirst = data.qualifica.first;
+			qualificaMiddle = data.qualifica.middle;
+			qualificaLast = data.qualifica.last;
 
-			primo = data.fastidio.primo;
-			secondo = data.fastidio.secondo;
-			terzo = data.fastidio.terzo;
+			azione = data.fastidio.azione;
+			oggetto = data.fastidio.oggetto;
+			specifica = data.fastidio.specifica;
 
-			ansiami = data.ansia;
+			ansie = data.ansia;
+			battute = data.battuta;
 
-			battutona = data.battuta;
+			qualificaFirstLunghezza = qualificaFirst.length;
+			qualificaMiddleLunghezza = qualificaMiddle.length;
+			qualificaLastLunghezza = qualificaLast.length;
 
-			num1 = first.length;
-			num2 = middle.length;
-			num3 = last.length;
+			azioneLunghezza = azione.length;
+			oggettoLunghezza = oggetto.length;
+			specificaLunghezza = specifica.length;
 
-			fast1 = primo.length;
-			fast2 = secondo.length;
-			fast3 = terzo.length;
+			ansiaLunghezza = ansie.length;
+			battutaLunghezza = battutona.length;
 
-			ansia1 = ansiami.length;
-
-			battuta1 = battutona.length;
 		} else {
-			document.getElementById('job_title_gen').innerHTML = "Ooops, something went wrong: I couldn't get any data";
+			document.getElementById('job_title_gen').innerHTML = "Ops, abbiamo un errore! Non riesco a trovare i dati";
 		}
 	};
 
 	request.onerror = function() {
-				document.getElementById('job_title_gen').innerHTML = "Ooops, something went wrong: I couldn't get any data";
+				document.getElementById('job_title_gen').innerHTML = "Ops, abbiamo un errore! Non riesco a trovare i dati";
 	};
 
 	request.send();
 }
 
+// Let's start!
 getphrases();
 
 /* Randomly choosing an array value */
 function pick(array, length){
-	// var chosenNumber = (Math.round(Math.random() * value));
 	var chosenNumber = array[Math.floor(Math.random()*length)];
 	console.log(chosenNumber);
 	return chosenNumber;
 }
 
 function qualificati() {
-	index1 = pick(first, num1);
-	index2 = pick(middle, num2);
-	index3 = pick(last, num3);
+	var index1 = pick(qualificaFirst, qualificaFirstLunghezza);
+	var index2 = pick(qualificaMiddle, qualificaMiddleLunghezza);
+	var index3 = pick(qualificaLast, qualificaLastLunghezza);
 	document.getElementById('job_title_gen').innerHTML = index1 + " " + index2 + " " + index3;
 }
 function infastidisci() {
-	fastindex1 = pick(primo, fast1);
-	fastindex2 = pick(secondo, fast2);
-	fastindex3 = pick(terzo, fast3);
-	document.getElementById('fastidio_gen').innerHTML = fastindex1 + " " + fastindex2 + " " + fastindex3;
+	var azioneIndex = pick(azione, azioneLunghezza);
+	var oggettoIndex = pick(oggetto, oggettoLunghezza);
+	var lunghezzaIndex = pick(specifica, specificaLunghezza);
+	document.getElementById('fastidio_gen').innerHTML = azioneIndex + " " + oggettoIndex + " " + lunghezzaIndex;
 }
 function ansiogeno() {
-	ansiaindex1 = pick(ansiami, ansia1);
-	document.getElementById('ansia_gen').innerHTML = ansiaindex1;
+	var ansia = pick(ansie, ansiaLunghezza);
+	document.getElementById('ansia_gen').innerHTML = ansia;
 }
 function tutto() {
   qualificati();
@@ -77,7 +78,6 @@ function tutto() {
   ansiogeno();
 }
 function sparabattuta() {
-	battutaccia = pick(battutona, battuta1);
+	var battutaccia = pick(battute, battutaLunghezza);
 	document.getElementById('battuta_gen').innerHTML = battutaccia;
 }
-/* Ready to rock! */
