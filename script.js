@@ -32,7 +32,7 @@ function getphrases() {
 			specificaLunghezza = specifica.length;
 
 			ansiaLunghezza = ansie.length;
-			battutaLunghezza = battutona.length;
+			battutaLunghezza = battute.length;
 
 		} else {
 			document.getElementById('job_title_gen').innerHTML = "Ops, abbiamo un errore! Non riesco a trovare i dati";
