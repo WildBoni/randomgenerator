@@ -2,6 +2,8 @@
 
 Create the weirdest IT nightmares!
 
+Curious about it? [Give it a try](https://davidebonifacio.it/playground)!
+
   - Choose your new, 2.0 job title
   - Create a new overwhelming issue
   - Spice things up by adding a catastrophe

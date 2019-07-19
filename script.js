@@ -65,8 +65,8 @@ function qualificati() {
 function infastidisci() {
 	var azioneIndex = pick(azione, azioneLunghezza);
 	var oggettoIndex = pick(oggetto, oggettoLunghezza);
-	var lunghezzaIndex = pick(specifica, specificaLunghezza);
-	document.getElementById('fastidio_gen').innerHTML = azioneIndex + " " + oggettoIndex + " " + lunghezzaIndex;
+	var specificaIndex = pick(specifica, specificaLunghezza);
+	document.getElementById('fastidio_gen').innerHTML = azioneIndex + " " + oggettoIndex + " " + specificaIndex;
 }
 function ansiogeno() {
 	var ansia = pick(ansie, ansiaLunghezza);
